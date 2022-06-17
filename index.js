@@ -17,7 +17,42 @@ Tips
 
 Challenge
 After you select a user, add the option to either show the todos or add a new todo to the list
-
-Challenge 2
-Now that you can add a todo, add the option to either delete or update a todo. Add also the option to repeatedly choose a different user, or to finish the program
 */
+
+console.log("users: ", window.users);
+console.log("todos: ", window.todos);
+
+let allUsersList = [];
+
+for (let user of users) {
+  allUsersList.push(`${user.id}: ${user.name} is from ${user.address.city}`);
+}
+
+alert(
+  allUsersList.join(`,
+`)
+);
+
+let idRecieved = prompt("What is your ID?");
+let userNameUser;
+let todoTitles = [];
+
+for (let user of users) {
+  if (idRecieved == user.id) {
+    userNameUser = `The username of this user is ${user.username}`;
+  }
+}
+for (let todo of todos) {
+  if (idRecieved == todo.userId) {
+    todoTitles.push(todo.title);
+  }
+}
+
+let showTodos = confirm("Do you need the todos of this user?");
+
+if (showTodos) {
+  alert(
+    `${userNameUser}.
+This user todo titles are: ${todoTitles.join(`, `)}.`
+  );
+}
